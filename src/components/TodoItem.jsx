@@ -15,7 +15,7 @@ function TodoItem(props){
     return(
         <div className="flex justify-between">
             <p>{props.index+1}.{props.item.activity}</p>
-            <button className="text-red-600" onClick={() => handleDelete(props.id)}>DEL</button>
+            <button className="cursor-pointer" onClick={() => handleDelete(props.id)}>❌</button>
         </div>
         
         

@@ -3,14 +3,7 @@ import TodoList from "./TodoList";
 import { useState } from "react";
 function TodoContainer() {
     const [activityArr, setActivityArr] = useState([
-            {
-                id:1,
-                activity:"go "
-            },
-            {
-                id:2,
-                activity:"walk"
-            }
+            
         ])
 
     return (
