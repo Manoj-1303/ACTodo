@@ -45,6 +45,7 @@ function Login(props) {
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
                         placeholder="Password"
                         onChange={handlePInput}
+                        autoComplete="new-password"
                     />
 
                     <button className="bg-green-500 text-white w-24 p-1 rounded-md" onClick={checkUser}>

@@ -48,20 +48,20 @@ function Signup(props) {
                         type="text"
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
                         placeholder="Username"
-                        onChange={handleUInput}
-                    />
+                        onChange={handleUInput}/>
 
                     <input
                         type="password"
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
                         placeholder="Password"
                         onChange={handlePInput}
-                    />
+                        autoComplete="new-password"/>
 
                     <input
                         type="password"
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
-                        placeholder="Confirm Password" />
+                        placeholder="Confirm Password"
+                        autoComplete="new-password" />
 
                     <button className="bg-[#FCA201] w-24 p-1 rounded-md" onClick={addUser}>
                         Sign Up
