@@ -10,6 +10,7 @@ function Signup(props) {
 
     const [eusername, setEusername] = useState()
     const [epassword, setEpassword] = useState()
+    const [cpassword, setCpassword] = useState()
     const [showPassword, setShowPassword] = useState(false)
 
     function handleUInput(evt) {
@@ -18,6 +19,10 @@ function Signup(props) {
 
     function handlePInput(evt) {
         setEpassword(evt.target.value)
+    }
+
+    function handleCPInput(evt) {
+        setCpassword(evt.target.value)
     }
 
     function addUser() {
@@ -33,13 +38,18 @@ function Signup(props) {
             alert("Password must be at least 8 characters long and contain at least one letter and one number.");
             return;
         }
+
+        if (epassword !== cpassword) {
+            alert("Passwords do not match!");
+            return;
+        }
+
         setusers([...users, { username: eusername, password: epassword }])
         navigate("/")
     }
 
-
     return (
-        <div className="bg-slate-800 p-10">
+        <div className="bg-slate-800 p-10 min-h-screen">
             <div className="bg-gray-100 p-10 border rounded-md">
                 <h1 className="text-3xl font-medium">Hey Hi</h1>
                 <p>Sign up here :)</p>
@@ -49,7 +59,8 @@ function Signup(props) {
                         type="text"
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
                         placeholder="Username"
-                        onChange={handleUInput} />
+                        onChange={handleUInput}
+                    />
 
                     <div className="relative w-52">
                         <input
@@ -85,14 +96,15 @@ function Signup(props) {
                         </button>
                     </div>
 
-                    <button className="bg-[#FCA201] w-24 p-1 rounded-md" onClick={addUser}>
+                    <button className="bg-[#FCA201] w-24 p-1 rounded-md mt-2" onClick={addUser}>
                         Sign Up
                     </button>
 
-                    <p>Already have an account? <Link to={"/"} className="underline">Login</Link>  </p>
+                    <p className="mt-2">Already have an account? <Link to={"/"} className="underline text-blue-600">Login</Link></p>
                 </div>
             </div>
-        </div>)
+        </div>
+    )
 }
 
 export default Signup
