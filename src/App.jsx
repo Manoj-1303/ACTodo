@@ -25,7 +25,7 @@ function App() {
     <Routes>
     <Route path='/' element={<Login users={users} setusers={setusers}/>}></Route>
     <Route path='/signup' element={<Signup users={users} setusers={setusers}/>}></Route>
-    <Route path='/landing' element={<Landing/>}></Route>
+    <Route path='/todo' element={<Landing/>}></Route>
     </Routes>
     </BrowserRouter>
   </div>
