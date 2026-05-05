@@ -1,35 +1,34 @@
 import Header from "./components/Header"
 import Cards from "./components/Cards"
 import TodoContainer from "./components/TodoContainer"
-import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Landing from "./pages/Landing"
+import Signup from "./pages/Signup"
+import Login from "./pages/Login"
+import { useState } from "react";
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(new Date());
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-  const formattedDate = currentTime.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  const formattedTime = currentTime.toLocaleTimeString('en-US', { hour12: false });
-  return (
-    <div className="min-h-screen bg-black p-10">
-      <div className="bg-[#EFEFEF] p-10 border rounded-md">
-        {/*Header*/}
-        <Header />
-        {/*Card*/}
-        <div className="flex justify-between gap-7 my-5 flex-wrap">
-          <Cards bgColor={"#FD6663"} title={"23°"} subtitle={"Vellore"} />
-          <Cards bgColor={"#00BBE6"} title={formattedDate} subtitle={formattedTime} />
-          <Cards bgColor={"#00FE8A"} title={"Built using"} subtitle={"React"} />
-        </div>
-        {/*TodoContainer*/}
-        <TodoContainer />
+ const [users,setusers] = useState([{
+            username:"manoj",
+            password:"123"
+        },
+        {
+          username:"abc",
+          password:"123"
+        }
+    ]
+)
 
-
-      </div>
-    </div>
+  return(
+    <div className="min-h-screen bg-black">
+    <BrowserRouter>
+    <Routes>
+    <Route path='/' element={<Login users={users} setusers={setusers}/>}></Route>
+    <Route path='/signup' element={<Signup users={users} setusers={setusers}/>}></Route>
+    <Route path='/landing' element={<Landing/>}></Route>
+    </Routes>
+    </BrowserRouter>
+  </div>
   )
 }
 
