@@ -10,6 +10,7 @@ function Signup(props) {
 
     const [eusername, setEusername] = useState()
     const [epassword, setEpassword] = useState()
+    const [showPassword, setShowPassword] = useState(false)
 
     function handleUInput(evt) {
         setEusername(evt.target.value)
@@ -48,20 +49,41 @@ function Signup(props) {
                         type="text"
                         className="w-52 border-black p-1 bg-transparent border rounded-md"
                         placeholder="Username"
-                        onChange={handleUInput}/>
+                        onChange={handleUInput} />
 
-                    <input
-                        type="password"
-                        className="w-52 border-black p-1 bg-transparent border rounded-md"
-                        placeholder="Password"
-                        onChange={handlePInput}
-                        autoComplete="new-password"/>
+                    <div className="relative w-52">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            className="w-full border-black p-1 pr-8 bg-transparent border rounded-md"
+                            placeholder="Password"
+                            onChange={handlePInput}
+                            autoComplete="new-password"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 text-sm cursor-pointer"
+                        >
+                            {showPassword ? "🙈" : "👁️"}
+                        </button>
+                    </div>
 
-                    <input
-                        type="password"
-                        className="w-52 border-black p-1 bg-transparent border rounded-md"
-                        placeholder="Confirm Password"
-                        autoComplete="new-password" />
+                    <div className="relative w-52 mt-2">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            className="w-full border-black p-1 pr-8 bg-transparent border rounded-md"
+                            placeholder="Confirm Password"
+                            onChange={handleCPInput}
+                            autoComplete="new-password"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 text-sm cursor-pointer"
+                        >
+                            {showPassword ? "🙈" : "👁️"}
+                        </button>
+                    </div>
 
                     <button className="bg-[#FCA201] w-24 p-1 rounded-md" onClick={addUser}>
                         Sign Up

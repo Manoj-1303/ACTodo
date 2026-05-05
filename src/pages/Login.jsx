@@ -7,6 +7,7 @@ function Login(props) {
     const [eusername, setEusername] = useState()
     const [epassword, setEpassword] = useState()
     const [ruser, setRuser] = useState(true)
+    const [showPassword, setShowPassword] = useState(false)
     const users = props.users
     function handleUInput(evt) {
         setEusername(evt.target.value)
@@ -39,14 +40,22 @@ function Login(props) {
                         placeholder="Username"
                         onChange={handleUInput}
                     />
-
-                    <input
-                        type="password"
-                        className="w-52 border-black p-1 bg-transparent border rounded-md"
-                        placeholder="Password"
-                        onChange={handlePInput}
-                        autoComplete="new-password"
-                    />
+                    <div className="relative w-52">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            className="w-full border-black p-1 pr-8 bg-transparent border rounded-md"
+                            placeholder="Password"
+                            onChange={handlePInput}
+                            autoComplete="new-password"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => setShowPassword(!showPassword)}
+                            className="absolute right-2 top-1/2 -translate-y-1/2 text-sm cursor-pointer"
+                        >
+                            {showPassword ? "🙈" : "👁️"}
+                        </button>
+                    </div>
 
                     <button className="bg-green-500 text-white w-24 p-1 rounded-md" onClick={checkUser}>
                         Login
